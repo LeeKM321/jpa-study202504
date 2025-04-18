@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = "id") // id 필드가 같으면 같은 객체로 처리하겠다.
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 
 @Entity // 이 클래스는 JPA가 관리한다. 이 클래스는 데이터베이스의 한 행에 정확히 대응한다.
 @Table(name = "tbl_product")
