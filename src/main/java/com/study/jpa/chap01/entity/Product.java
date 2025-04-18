@@ -7,7 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Getter @ToString
+@Getter @Setter @ToString
 @EqualsAndHashCode(of = "id") // id 필드가 같으면 같은 객체로 처리하겠다.
 @NoArgsConstructor
 @AllArgsConstructor
