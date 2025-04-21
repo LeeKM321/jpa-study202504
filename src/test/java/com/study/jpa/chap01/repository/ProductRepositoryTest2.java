@@ -71,6 +71,32 @@ class ProductRepositoryTest2 {
         assertEquals(4, products.size());
     }
 
+    @Test
+    @DisplayName("3번 상품의 이름과 가격을 변경해야 한다.")
+    void updateTest() {
+        // given
+        Long id = 3L;
+        String newName = "삼겹살";
+        int newPrice = 14000;
+
+        // when
+        Optional<Product> optional = productRepository.findById(id);
+
+        // optional이 감싸고 있는 객체가 비어있을 경우 예외가 발생.
+        // 존재한다면 해당 객체를 리턴.
+        Product product
+                = optional.orElseThrow(() -> new RuntimeException("조회된 객체가 없음!"));
+        product.setName(newName);
+        product.setPrice(newPrice);
+
+        // jpa는 따로 update 메서드를 제공하지 않습니다.
+        // 조회한 객체의 필드를 setter로 변경하면 자동으로 update가 나갑니다. (Dirty check)
+        productRepository.save(product);
+
+
+        // then
+    }
+
 }
 
 
