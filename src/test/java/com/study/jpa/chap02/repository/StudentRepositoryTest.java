@@ -74,6 +74,54 @@ class StudentRepositoryTest {
         System.out.println("\n\n\n");
     }
 
+    @Test
+    @DisplayName("native sql 테스트하기")
+    void nativeSQLTest() {
+        // given
+        String name = "춘식이";
+        String city = "제주도";
+
+        // when
+        List<Student> students
+                = studentRepository.getStudentByNameOrCity(name, city);
+
+        // then
+        System.out.println("\n\n\n");
+        students.forEach(System.out::println);
+        System.out.println("\n\n\n");
+    }
+
+    @Test
+    @DisplayName("JPQL로 이름과 도시가 포함된 학생 목록 조회하기")
+    void jpqlTest() {
+        // given
+        String name = "춘";
+        String city = "서울시";
+
+        // when
+        List<Student> students
+                = studentRepository.searchByNameWithJPQL(name);
+
+        // then
+        System.out.println("\n\n\n");
+        students.forEach(System.out::println);
+        System.out.println("\n\n\n");
+    }
+
+    @Test
+    @DisplayName("JPQL로 삭제하기")
+    void deleteJPQLTest() {
+        // given
+        String name = "어피치";
+        String city = "제주도";
+
+        // when
+        studentRepository.deleteByNameAndCityWithJPQL(name, city);
+
+        // then
+        assertEquals(0, studentRepository.findByName(name).size());
+    }
+
 }
 
 
