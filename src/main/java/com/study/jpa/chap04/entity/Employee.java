@@ -3,7 +3,8 @@ package com.study.jpa.chap04.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Setter @Getter @ToString
+@Setter @Getter
+@ToString(exclude = "department")
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
