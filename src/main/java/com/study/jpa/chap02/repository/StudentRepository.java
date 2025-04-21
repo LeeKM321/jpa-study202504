@@ -51,7 +51,7 @@ public interface StudentRepository extends JpaRepository<Student,String> {
     List<Student> getStudentByNameOrCity2(String name, String city);
 
     // 특정 이름이 포함된 학생 리스트 조회하기
-    @Query("SELECT stu FROM Student stu WHERE stu.name LIKE ?1")
+    @Query("SELECT stu FROM Student stu WHERE stu.name LIKE %?1%")
     List<Student> searchByNameWithJPQL(String name);
 
     // 도시명으로 학생 1명을 단일 조회 -> 이름만 조회
